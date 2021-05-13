@@ -12,11 +12,13 @@ struct ContentView: View {
     @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
-        VStack{
-            ForEach(viewModel.records){
-                record in WeatherRecordView(record: record, viewModel: viewModel)
-            }
-        }.padding()
+        ScrollView{
+            VStack{
+                ForEach(viewModel.records){
+                    record in WeatherRecordView(record: record, viewModel: viewModel)
+                }
+            }.padding()
+        }
     }
 }
 
@@ -25,7 +27,8 @@ struct WeatherRecordView: View {
     var viewModel: WeatherViewModel
     var body: some View{
         ZStack{
-            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).stroke()
+            RoundedRectangle(cornerRadius: 25.0)
+                .stroke().frame(height : 50.0)
             HStack{
                 Text("☀️").font(.largeTitle)
                 VStack{
