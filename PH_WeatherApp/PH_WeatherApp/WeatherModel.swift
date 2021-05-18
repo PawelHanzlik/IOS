@@ -10,9 +10,11 @@ import Foundation
 struct WeatherModel{
     
     var records: Array<WeatherRecord> = []
+    var states: Array<String> = []
     
     init(cities: Array<String>, states: Array<String>){
         records = Array<WeatherRecord>()
+        self.states = states
         for city in cities{
             records.append(WeatherRecord(cityName: city, weatherState: states.randomElement() ?? "Clear"))
         }
@@ -29,10 +31,12 @@ struct WeatherModel{
     }
     
     mutating func refresh(record: WeatherRecord){
-        records[records.firstIndex(of: record) ?? 0].temperature = Float.random(in: -10.0 ... 30.0)
-        records[records.firstIndex(of: record) ?? 0].humidity = Float.random(in: 0 ... 100)
-        records[records.firstIndex(of: record) ?? 0].windSpeed = Float.random(in: 0 ... 20)
-        records[records.firstIndex(of: record) ?? 0].windDirection = Float.random(in: 0...360)
+        let i = records.firstIndex(of: record) ?? 0
+        records[i].temperature = Float.random(in: -10.0 ... 30.0)
+        records[i].humidity = Float.random(in: 0 ... 100)
+        records[i].windSpeed = Float.random(in: 0 ... 20)
+        records[i].windDirection = Float.random(in: 0...360)
+        records[i].weatherState = self.states.randomElement() ?? "Clear"
     }
     
     func getWeatherState(record: WeatherRecord) -> String{
