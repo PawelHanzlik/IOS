@@ -6,10 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 class WeatherViewModel : ObservableObject{
     
-    @Published private(set) var model: WeatherModel  = WeatherModel(cities: ["Venice", "Paris", "Warsaw", "Cracow", "Berlin", "London","Barcelona"])
+    var cornerRadius: Float = 25.0
+    var height: Float = 75.0
+    var scale: Float = 0.7
+    var iconPriority: Double = 100.0
+    var textPriority: Double = 200.0
+    
+    @Published private(set) var model: WeatherModel  = WeatherModel(cities: ["Venice", "Paris", "Warsaw", "Cracow", "Berlin", "London","Barcelona"],states: ["Clear", "Snow", "Heavy Rain", "Heavy Cloud", "Light Cloud", "Showers", "Thunderstorm"])
     
     var records: Array<WeatherModel.WeatherRecord> {
         model.records
@@ -17,5 +24,16 @@ class WeatherViewModel : ObservableObject{
     
     func refresh(record: WeatherModel.WeatherRecord){
         model.refresh(record: record)
+    }
+    
+    func getWeatherState(record: WeatherModel.WeatherRecord) -> String{
+        model.getWeatherState(record: record)
+    }
+    
+}
+
+struct WeatherViewModel_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
