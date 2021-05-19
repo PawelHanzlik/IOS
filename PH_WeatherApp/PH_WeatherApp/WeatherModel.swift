@@ -15,6 +15,7 @@ struct WeatherModel{
     init(cities: Array<String>, states: Array<String>){
         records = Array<WeatherRecord>()
         self.states = states
+        // Dla każdego miasta zostaje losowany stan pogody
         for city in cities{
             records.append(WeatherRecord(cityName: city, weatherState: states.randomElement() ?? "Clear"))
         }
@@ -30,6 +31,7 @@ struct WeatherModel{
         var windDirection: Float = Float.random(in: 0...360)
     }
     
+    // Funkcja zmieniająca każdy parametr rekordu po wciśnięciu przycisku refresh
     mutating func refresh(record: WeatherRecord){
         let i = records.firstIndex(of: record) ?? 0
         records[i].temperature = Float.random(in: -10.0 ... 30.0)
@@ -39,6 +41,7 @@ struct WeatherModel{
         records[i].weatherState = self.states.randomElement() ?? "Clear"
     }
     
+    // Funkcja zwracająca ikonkę pogody w zależności od stanu pogody w rekordzie
     func getWeatherState(record: WeatherRecord) -> String{
         switch record.weatherState{
         case "Clear" : return "☀️"
