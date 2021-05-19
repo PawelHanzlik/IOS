@@ -32,7 +32,7 @@ struct WeatherRecordView: View {
                 .stroke().frame(height : CGFloat(viewModel.height))
             HStack{
                 GeometryReader{geometry in
-                    Text(viewModel.getWeatherState(record: record)).font(.system(size : CGFloat(viewModel.scale) * geometry.size.height)).frame(alignment: .leading).layoutPriority(viewModel.iconPriority)}
+                    Text(viewModel.getWeatherState(record: record)).font(.system(size : CGFloat(viewModel.scale) * geometry.size.height)).frame(alignment: .leading)}
                 VStack(alignment: .leading){
                     Text(record.cityName)
                     switch displayParam{
@@ -42,7 +42,7 @@ struct WeatherRecordView: View {
                     case "WindDirection": Text("WindDirection:\(String(format: "%.1f",record.windDirection))º").font(.caption).onTapGesture {displayParam = "Temperature"}
                     default: Text("Temperature: \(String(format: "%.1f",record.temperature))℃").font(.caption).onTapGesture {displayParam = "Humidity"}
                     }
-                }.layoutPriority(viewModel.textPriority)
+                }.frame(width: CGFloat(viewModel.width), alignment: .leading)
                 Text("🔄").font(.largeTitle).onTapGesture {
                     viewModel.refresh(record: record)
                 }.frame(alignment: .trailing)
