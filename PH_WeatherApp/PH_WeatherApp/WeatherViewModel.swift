@@ -10,11 +10,13 @@ import SwiftUI
 
 class WeatherViewModel : ObservableObject{
     
+    // Wszystkie stałe wartości parametrów
     var cornerRadius: Float = 25.0
     var height: Float = 75.0
     var scale: Float = 0.7
     var width: Float = 150.0
     
+    // Przekazuję także różne stany pogody do modelu, gdzie jest on losowany.
     @Published private(set) var model: WeatherModel  = WeatherModel(cities: ["Venice", "Paris", "Warsaw", "Cracow", "Berlin", "London","Barcelona"],states: ["Clear", "Snow", "Heavy Rain", "Heavy Cloud", "Light Cloud", "Showers", "Thunderstorm"])
     
     var records: Array<WeatherModel.WeatherRecord> {
@@ -25,6 +27,7 @@ class WeatherViewModel : ObservableObject{
         model.refresh(record: record)
     }
     
+    // Metoda zwracająca stan pogody danego modelu
     func getWeatherState(record: WeatherModel.WeatherRecord) -> String{
         model.getWeatherState(record: record)
     }
