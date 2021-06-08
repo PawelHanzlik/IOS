@@ -46,7 +46,7 @@ struct WeatherRecordView: View {
                     }
                 }.frame(width: CGFloat(viewModel.width), alignment: .leading) // Ustawienie szerokości stacka na stałą wartość i wyrównanie go do lewej
                 Text("🔄").font(.largeTitle).onTapGesture {
-                    viewModel.refresh(record: record)
+                    viewModel.fetch(forId: record.woeId, record: record)
                 }.frame(alignment: .trailing) // Wyrównanie ikony refresh do prawej strony
             }
         }
