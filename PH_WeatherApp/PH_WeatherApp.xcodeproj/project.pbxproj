@@ -15,6 +15,8 @@
 		06B654302643D7110064DCE6 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6542F2643D7110064DCE6 /* WeatherModel.swift */; };
 		06D3C121266FD95B00A8B421 /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3C120266FD95B00A8B421 /* WeatherFetcher.swift */; };
 		06D3C124266FDAEC00A8B421 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3C123266FDAEC00A8B421 /* WeatherResponse.swift */; };
+		06D3C129266FF75800A8B421 /* LocalizationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3C128266FF75800A8B421 /* LocalizationFetcher.swift */; };
+		06D3C12C266FF86300A8B421 /* LocalizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D3C12B266FF86300A8B421 /* LocalizationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		06B6542F2643D7110064DCE6 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		06D3C120266FD95B00A8B421 /* WeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
 		06D3C123266FDAEC00A8B421 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		06D3C128266FF75800A8B421 /* LocalizationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationFetcher.swift; sourceTree = "<group>"; };
+		06D3C12B266FF86300A8B421 /* LocalizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +68,13 @@
 				06B6542F2643D7110064DCE6 /* WeatherModel.swift */,
 				06B654182643D4D90064DCE6 /* PH_WeatherAppApp.swift */,
 				06D3C120266FD95B00A8B421 /* WeatherFetcher.swift */,
+				06D3C128266FF75800A8B421 /* LocalizationFetcher.swift */,
 				06D3C123266FDAEC00A8B421 /* WeatherResponse.swift */,
 				06B6541A2643D4D90064DCE6 /* ContentView.swift */,
 				06B6541C2643D4DD0064DCE6 /* Assets.xcassets */,
 				06B654212643D4DD0064DCE6 /* Info.plist */,
 				06B6541E2643D4DD0064DCE6 /* Preview Content */,
+				06D3C12B266FF86300A8B421 /* LocalizationResponse.swift */,
 			);
 			path = PH_WeatherApp;
 			sourceTree = "<group>";
@@ -151,9 +157,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B6541B2643D4D90064DCE6 /* ContentView.swift in Sources */,
+				06D3C129266FF75800A8B421 /* LocalizationFetcher.swift in Sources */,
 				06D3C124266FDAEC00A8B421 /* WeatherResponse.swift in Sources */,
 				06D3C121266FD95B00A8B421 /* WeatherFetcher.swift in Sources */,
 				06B6542D2643D5A00064DCE6 /* WeatherViewModel.swift in Sources */,
+				06D3C12C266FF86300A8B421 /* LocalizationResponse.swift in Sources */,
 				06B654302643D7110064DCE6 /* WeatherModel.swift in Sources */,
 				06B654192643D4D90064DCE6 /* PH_WeatherAppApp.swift in Sources */,
 			);
