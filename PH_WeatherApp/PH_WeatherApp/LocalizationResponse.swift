@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocalizationResponse: Codable{
+struct LocalizationResponseElement: Codable{
     let distance: Int
     let title: String
     let locationType: LocationType
@@ -26,3 +26,4 @@ enum LocationType: String, Codable{
     case city = "City"
 }
 
+typealias LocalizationResponse = [LocalizationResponseElement]

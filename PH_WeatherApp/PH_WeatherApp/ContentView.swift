@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct ContentView: View {
     
@@ -26,6 +28,10 @@ struct WeatherRecordView: View {
     var record: WeatherModel.WeatherRecord
     var viewModel: WeatherViewModel
     @State var displayParam: String = "Temperature"
+    // Wspórzędne dla Bielska- Bialej
+    @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.82, longitude: 19.04), span: MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0))
+    @State var sheet = false
+    @State private var places: [Place] = [Place(coordinate: .init(latitude: 49.82, longitude: 19.04))]
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: CGFloat(viewModel.cornerRadius))
@@ -48,10 +54,23 @@ struct WeatherRecordView: View {
                 Text("🔄").font(.largeTitle).onTapGesture {
                     viewModel.fetch(forId: record.woeId, record: record)
                 }.frame(alignment: .trailing) // Wyrównanie ikony refresh do prawej strony
+                Text("🌍").font(.largeTitle).onTapGesture {
+                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: record.latitude, longitude: record.longitude), span: MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0))
+                    sheet = true
+                }.frame(alignment: .trailing)
+                .sheet(isPresented: $sheet, content: {Map(coordinateRegion: $region, annotationItems: [Place(coordinate: .init(latitude: record.latitude, longitude: record.longitude))]){
+                    place in MapPin(coordinate: place.coordinate)
+                }.padding()})
             }
         }
     }
 }
+
+struct Place: Identifiable{
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(viewModel: WeatherViewModel())

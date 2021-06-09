@@ -30,7 +30,8 @@ struct WeatherModel{
         var windSpeed: Float = Float.random(in: 0 ... 20)
         var windDirection: Float = Float.random(in: 0...360)
         var woeId: String
-        
+        var latitude: Double = 0.0
+        var longitude: Double = 0.0
     }
     
     // Funkcja zmieniająca każdy parametr rekordu po wciśnięciu przycisku refresh
@@ -43,15 +44,22 @@ struct WeatherModel{
         records[i].weatherState = self.states.randomElement() ?? "Clear"
     }
     
-    
-    mutating func refresh(woeId: String, response: WeatherResponse, record: WeatherRecord){
+    // Funkcja zmieniająca dane rekordu na podstawie rzeczywistych danych pogody.
+    mutating func refresh(woeId: String, response: WeatherResponse, record: WeatherRecord, currLocationName: String){
         let i = records.firstIndex(of: record) ?? 0
-        records[i].cityName = response.title
+        if i == 0{
+            records[i].cityName = "\(currLocationName) (\(response.title))"
+        }
+        else{
+            records[i].cityName = response.title
+        }
         records[i].temperature = Float(response.consolidatedWeather[0].theTemp)
         records[i].humidity = Float(response.consolidatedWeather[0].humidity)
         records[i].windSpeed = Float(response.consolidatedWeather[0].windSpeed)
         records[i].windDirection = Float(response.consolidatedWeather[0].windDirection)
         records[i].weatherState = response.consolidatedWeather[0].weatherStateName
+        records[i].latitude = Double(response.lattLong.components(separatedBy: ",")[0])!
+        records[i].longitude = Double(response.lattLong.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")[1])!
     }
     
     
