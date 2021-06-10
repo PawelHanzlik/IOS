@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06449A352671F9A2004E1143 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06449A342671F9A2004E1143 /* WeatherDetailsView.swift */; };
 		06B654192643D4D90064DCE6 /* PH_WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B654182643D4D90064DCE6 /* PH_WeatherAppApp.swift */; };
 		06B6541B2643D4D90064DCE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6541A2643D4D90064DCE6 /* ContentView.swift */; };
 		06B6541D2643D4DD0064DCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B6541C2643D4DD0064DCE6 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06449A342671F9A2004E1143 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		06B654152643D4D90064DCE6 /* PH_WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PH_WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B654182643D4D90064DCE6 /* PH_WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PH_WeatherAppApp.swift; sourceTree = "<group>"; };
 		06B6541A2643D4D90064DCE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				06D3C128266FF75800A8B421 /* LocalizationFetcher.swift */,
 				06D3C123266FDAEC00A8B421 /* WeatherResponse.swift */,
 				06D3C12B266FF86300A8B421 /* LocalizationResponse.swift */,
+				06449A342671F9A2004E1143 /* WeatherDetailsView.swift */,
 				06B6541A2643D4D90064DCE6 /* ContentView.swift */,
 				06B6541C2643D4DD0064DCE6 /* Assets.xcassets */,
 				06B654212643D4DD0064DCE6 /* Info.plist */,
@@ -164,6 +167,7 @@
 				06D3C12C266FF86300A8B421 /* LocalizationResponse.swift in Sources */,
 				06B654302643D7110064DCE6 /* WeatherModel.swift in Sources */,
 				06B654192643D4D90064DCE6 /* PH_WeatherAppApp.swift in Sources */,
+				06449A352671F9A2004E1143 /* WeatherDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

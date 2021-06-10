@@ -14,12 +14,14 @@ struct ContentView: View {
     @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
-        ScrollView{
-            VStack{
-                ForEach(viewModel.records){
-                    record in WeatherRecordView(record: record, viewModel: viewModel)
-                }
-            }.padding()
+        NavigationView{
+            ScrollView{
+                VStack{
+                    ForEach(viewModel.records){
+                        record in WeatherRecordView(record: record, viewModel: viewModel)
+                    }
+                }.padding()
+            }.navigationBarTitle("PH Weather App")
         }
     }
 }
@@ -46,8 +48,8 @@ struct WeatherRecordView: View {
                     switch displayParam{
                     case "Temperature": Text("Temperature: \(String(format: "%.1f",record.temperature))℃").font(.caption).onTapGesture {displayParam = "Humidity"}
                     case "Humidity": Text("Humidity: \(String(format: "%.1f",record.humidity))%").font(.caption).onTapGesture {displayParam = "WindSpeed"}
-                    case "WindSpeed": Text("WindSpeed:\(String(format: "%.1f",record.windSpeed))m/s").font(.caption).onTapGesture {displayParam = "WindDirection"}
-                    case "WindDirection": Text("WindDirection:\(String(format: "%.1f",record.windDirection))º").font(.caption).onTapGesture {displayParam = "Temperature"}
+                    case "WindSpeed": Text("WindSpeed: \(String(format: "%.1f",record.windSpeed))m/s").font(.caption).onTapGesture {displayParam = "WindDirection"}
+                    case "WindDirection": Text("WindDirection: \(String(format: "%.1f",record.windDirection))º").font(.caption).onTapGesture {displayParam = "Temperature"}
                     default: Text("Temperature: \(String(format: "%.1f",record.temperature))℃").font(.caption).onTapGesture {displayParam = "Humidity"}
                     }
                 }.frame(width: CGFloat(viewModel.width), alignment: .leading) // Ustawienie szerokości stacka na stałą wartość i wyrównanie go do lewej
@@ -61,6 +63,9 @@ struct WeatherRecordView: View {
                 .sheet(isPresented: $sheet, content: {Map(coordinateRegion: $region, annotationItems: [Place(coordinate: .init(latitude: record.latitude, longitude: record.longitude))]){
                     place in MapPin(coordinate: place.coordinate)
                 }.padding()})
+                NavigationLink(destination: WeatherDetailsView(viewModel: viewModel, record: record)){
+                    Text("▶️")
+                }
             }
         }
     }
